@@ -3,8 +3,13 @@ services:
   registry:
     image: registry:latest
     container_name: registry
+    environment:
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/registry.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/registry.key
+      REGISTRY_HTTP_ADDR: 0.0.0.0:443
     volumes:
       - ./data:/var/lib/registry
+      - ./certs:/certs
     ports:
-      - 5000:5000
+      - 5443:443
     restart: always
