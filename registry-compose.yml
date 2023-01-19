@@ -1,0 +1,10 @@
+---
+services:
+  registry:
+    image: registry:latest
+    container_name: registry
+    volumes:
+      - ./data:/var/lib/registry
+    ports:
+      - 5000:5000
+    restart: always
